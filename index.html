@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
 		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="icon" href="./img/favicon.ico">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
@@ -21,6 +22,14 @@
 				<section data-background="./img/worldmap.png">
 					<h2>Tokyo Beyond 2050</h2>
 				</section>
+
+				<section>
+					<video
+					data-autoplay
+					src="./video/Flight Network Video_glitch_low.mp4"
+				  ></video>
+				</section>
+
 				<!-- slide: コンセプト -->
 				<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)">
 					<h2>都市の魅力</h2>
@@ -84,6 +93,7 @@
 			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
+				autoPlayMedia: true,
 
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
