@@ -36,16 +36,16 @@
 				<!-- slide: 2つの要素 -->
 				<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)">
 					<div class="r-hstack justify-center">
-						<div class="r-hstack justify-center" data-id="box1" data-auto-animate-delay="0" style="background: #009ffd; width: 300px; height: 200px; margin: 10px;">
+						<div class="r-hstack justify-center" data-id="box1" data-auto-animate-delay="0" style="background: #009ffd; width: 300px; height: 200px; margin: 10px; border-radius: 10%">
 							<div>
-								<h6>普遍的な魅力</h6>
-								<p>Functionality</p>
+								<h6 data-auto-animate-delay="1">普遍的な魅力</h6> <!-- 500ms delay -->
+								<p data-auto-animate-delay="1">Functionality</p> <!-- 1000ms delay -->
 							</div>
 						</div>
-						<div class="r-hstack justify-center" data-id="box2" data-auto-animate-delay="0" style="background: #ffa400; width: 300px; height: 200px; margin: 10px;">
+						<div class="r-hstack justify-center" data-id="box2" data-auto-animate-delay="0" style="background: #ffa400; width: 300px; height: 200px; margin: 10px; border-radius: 10%">
 							<div>
-								<h6>固有の魅力</h6>
-								<p>Identity</p>
+								<h6 data-auto-animate-delay="1">固有の魅力</h6> <!-- 500ms delay -->
+								<p data-auto-animate-delay="1">Identity</p> <!-- 1000ms delay -->
 							</div>
 						</div>
 					</div>
@@ -54,36 +54,112 @@
 				<!-- slide: 2つの要素が合成 -->
 				<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)">
 					<div class="r-stack">
-						<div data-id="box1" style="background: #009ffd; width: 400px; height: 400px; border-radius: 50%;"></div>
-						<div data-id="box2" style="background: #ffa400; width: 300px; height: 300px; border-radius: 50%;"></div>
+						<div data-id="box1" style="background: #009ffd; width: 400px; height: 400px; border-radius: 10%;"></div>
+						<div data-id="box2" style="background: #ffa400; width: 300px; height: 300px; border-radius: 10%; display: flex; align-items: center; justify-content: center;">
+							<h6 style="margin: 0;">都市の魅力</h6>
+						</div>
 					</div>
-					<h6 data-auto-animate-delay="1" style="margin-top: 20px;">都市の魅力</h6>
 				</section>
+
+				<!-- slide: 魅力の定義 -->
+				<section>
+					<div style="display: flex; justify-content: center; gap: 20px;">
+						<div>
+							<img data-src="./img/gpci2023_cover.png" width="300">
+						</div>
+						<div>
+							<img data-src="./img/gpci2023_cover.png" width="300">
+						</div>
+					</div>
+				</section>
+
+
+
 
 				<!-- slide: 魅力の定義 -->
 				<section>
 					<!-- v-slide: 普遍的な魅力とは -->
 					<section id="fragments">
-						<h2>普遍的な魅力</h2>
-						<h6>&lt; Functionality &gt;</h6>
+						<h4>普遍的な魅力<br>- Functionality -</h4>
 						<ul>
 							<li class="fragment">経済</li>
 							<li class="fragment">研究・開発</li>
 							<li class="fragment">居住</li>
-							<li class="fragment">環境</li>
+							<li class="fragment">環境（量）</li>
 							<li class="fragment">交通・アクセス</li>
 						</ul>
 					</section>
 					<!-- slide: 固有の魅力とは -->
 					<section>
-						<h2>固有の魅力</h2>
-						<h6>&lt; Identity &gt;</h6>
+						<h4>固有の魅力<br>- Identity -</h4>
 						<ul>
 							<li class="fragment">文化・交流</li>
-							<li class="fragment">環境</li>
+							<li class="fragment">環境（質）</li>
 						</ul>
 					</section>
 				</section>
+				
+				
+				<!-- slide: 対象指標一覧 -->
+				<section>
+					<h4>指標一覧</h4>
+					<table style="font-size: 0.5em; width: 80%; margin: 0 auto; border-collapse: collapse;">
+						<tr>
+							<th style="padding: 5px; border: 1px solid #000; background-color: gray; text-align: center;">魅力</th>
+							<th style="padding: 5px; border: 1px solid #000; background-color: gray; text-align: center;">分野</th>
+							<th style="padding: 5px; border: 1px solid #000; background-color: gray; text-align: center;">指標</th>
+						</tr>
+						<tr>
+							<th style="padding: 5px; border: 1px solid #000; background-color: #009ffd;" rowspan="10">普遍的な魅力</th>
+							<td style="padding: 5px; border: 1px solid #000; background-color: #917099;" rowspan="2">経済</td>
+							<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000; background-color: #738cac;" rowspan="2">研究・開発</td>
+							<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000; background-color: #71c2de;" rowspan="2">居住</td>
+							<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000; background-color: #9cb866;" rowspan="2">環境（量）</td>
+							<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000; background-color: #eeaa3d;" rowspan="2">交通・アクセス</td>
+							<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+						</tr>
+						<tr>
+							<th style="padding: 5px; border: 1px solid #000; background-color: #ffa400;" rowspan="3">固有の魅力</th>
+							<td style="padding: 5px; border: 1px solid #000; background-color: #de819a;" rowspan="2">文化・交流</td>
+							<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000; background-color: #9cb866;" rowspan="1">環境（質）</td>
+							<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+						</tr>
+					</table>
+				</section>
+				
 
 				<!-- v-slide: Mapbox: 緑地 -->
 				<section>
