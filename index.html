@@ -23,6 +23,115 @@
 					<h2>Tokyo Beyond 2050</h2>
 				</section>
 
+				<!-- slide: GPCI 6分野 -->
+				<section>
+					<section>
+						<div style="display: flex; justify-content: center; gap: 20px;">
+							<div>
+								<img data-src="./img/gpci2023_cover.png" width="450">
+							</div>
+							<div style="display: flex; justify-content: center; align-items: center;">
+								<img data-src="./svg/gpci2023_six_functions.svg" width="600">
+							</div>
+						</div>
+					</section>
+					<!-- slide: 対象指標一覧 -->
+					<section>
+						<h4>指標一覧</h4>
+						<table style="font-size: 0.5em; width: 80%; margin: 0 auto; border-collapse: collapse;">
+							<tr>
+								<th style="padding: 5px; border: 1px solid #000; background-color: gray; text-align: center;">分野</th>
+								<th style="padding: 5px; border: 1px solid #000; background-color: gray; text-align: center;">指標</th>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000; background-color: #917099;" rowspan="2">経済</td>
+								<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000; background-color: #738cac;" rowspan="2">研究・開発</td>
+								<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000; background-color: #de819a;" rowspan="2">文化・交流</td>
+								<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000; background-color: #71c2de;" rowspan="2">居住</td>
+								<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000; background-color: #9cb866;" rowspan="2">環境（量）</td>
+								<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000; background-color: #eeaa3d;" rowspan="2">交通・アクセス</td>
+								<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+							</tr>
+	
+						</table>
+					</section>
+				</section>
+
+
+				<!-- slide: 相関係数（ヒートマップ） -->
+				<section>
+					<section>
+						<h2>重回帰分析</h2>
+						<p>
+							<script type="text/x-mathjax-config">
+								MathJax.Hub.Config({
+									TeX: {
+										Macros: {
+											// Custom macros can be added here
+										}
+									}
+								});
+							</script>
+							\( \text{y} = \theta_0 + \theta_1 \cdot x_1 + \theta_2 \cdot x_2 + \cdots + \theta_n \cdot x_n \)
+						</p>
+					  </section>
+					<!-- slide: 全指標-->
+					<section>
+						<div style="display: flex; justify-content: center; gap: 20px;">
+							<div style="display: flex; justify-content: center; align-items: center;">
+								<img data-src="./img/heatmap_all_indicators.png" width="750">
+							</div>
+						</div>
+					</section>
+					<!-- slide: 選別された指標-->
+					<section>
+						<div style="display: flex; justify-content: center; gap: 20px;">
+							<div style="display: flex; justify-content: center; align-items: center;">
+								<img data-src="./img/heatmap_selected_indicators.png" width="750">
+							</div>
+						</div>
+					</section>
+					<!-- slide: 各説明変数の相関係数-->
+					<section>
+						<div style="display: flex; justify-content: center; gap: 20px;">
+							<div style="display: flex; justify-content: center; align-items: center;">
+								<img data-src="./svg/coef.svg" height="650">
+							</div>
+						</div>
+					</section>
+				</section>
+
+				
 				<!-- slide: コンセプト -->
 				<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)" data-background-color="black">
 					<h2>都市の魅力</h2>
@@ -59,46 +168,6 @@
 							<h6 style="margin: 0;">都市の魅力</h6>
 						</div>
 					</div>
-				</section>
-
-				<!-- slide: GPCI 6分野 -->
-				<section>
-					<div style="display: flex; justify-content: center; gap: 20px;">
-						<div>
-							<img data-src="./img/gpci2023_cover.png" width="450">
-						</div>
-						<div style="display: flex; justify-content: center; align-items: center;">
-							<img data-src="./svg/gpci2023_six_functions.svg" width="600">
-						</div>
-					</div>
-				</section>
-
-				<!-- slide: 相関係数（ヒートマップ） -->
-				<section>
-					<!-- slide: 全指標-->
-					<section>
-						<div style="display: flex; justify-content: center; gap: 20px;">
-							<div style="display: flex; justify-content: center; align-items: center;">
-								<img data-src="./img/heatmap_all_indicators.png" width="750">
-							</div>
-						</div>
-					</section>
-					<!-- slide: 選別された指標-->
-					<section>
-						<div style="display: flex; justify-content: center; gap: 20px;">
-							<div style="display: flex; justify-content: center; align-items: center;">
-								<img data-src="./img/heatmap_selected_indicators.png" width="750">
-							</div>
-						</div>
-					</section>
-					<!-- slide: 各説明変数の相関係数-->
-					<section>
-						<div style="display: flex; justify-content: center; gap: 20px;">
-							<div style="display: flex; justify-content: center; align-items: center;">
-								<img data-src="./svg/coef.svg" height="650">
-							</div>
-						</div>
-					</section>
 				</section>
 
 				<!-- slide: 魅力の定義 -->
@@ -237,6 +306,10 @@
 		<script src="plugin/highlight/highlight.js"></script>
 		<!-- Fullscreen plugin -->
 		<script src="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/fullscreen/plugin.js"></script>
+		<!-- Latex -->
+		<script src="plugin/math/math.js"></script>
+
+
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
@@ -246,7 +319,7 @@
 				autoPlayMedia: true,
 
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealFullscreen ]
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealFullscreen, RevealMath.KaTeX ]
 			});
 		</script>
 	</body>
