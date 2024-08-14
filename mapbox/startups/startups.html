@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Load data from an external GeoJSON file</title>
+<title>mapbox</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 <!-- mapbox -->   
 <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet">
@@ -48,15 +48,8 @@ body { margin: 0; padding: 0; }
 
 <!-- Sidebar -->
 <div id="sidebar">
-    <h1 class="indicator-title">ハイクラスホテル</h1>
-    <form id="fly">
-        <!-- Select a city to fly to -->
-        <select name="select">
-            <option value="fly-tyo">Tokyo</option>
-            <option value="fly-nyc">New York</option>
-            <option value="fly-lon">London</option>
-        </select>
-    </form>    
+    <h1 class="indicator-title">startups</h1>
+    <p style="color: white; font-size: 16pt;">(設立:2014-2023年、従業員数:10人以上)</p>
 </div>
 
 <div id="map"></div>
@@ -67,25 +60,122 @@ body { margin: 0; padding: 0; }
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox/satellite-v9',
         projection: 'globe', // Display the map as a globe, since satellite-v9 defaults to Mercator
-        zoom: 11, // starting zoom
+        zoom: 12, // starting zoom
         center: [139.7527758040573, 35.68535529255434] // starting center
     });
 
     map.on('load', () => {
 
+        //##### 東京5区 データ #####//
+        // Add a source for the city polygons.
+        map.addSource('chiyodaward', {
+            'type': 'geojson',
+            'data': '../geojson_common/chiyoda.geojson'
+        });
+
+        // Add a layer showing the city polygons.
+        map.addLayer({
+            'id': '千代田区',
+            'type': 'fill',
+            'source': 'chiyodaward',
+            'layout': {
+                'visibility': 'visible'
+            },
+            'paint': {
+                'fill-color': 'rgba(255,0,0,.3)'
+            }
+        });
+
+        // Add a source for the city polygons.
+        map.addSource('chuoward', {
+            'type': 'geojson',
+            'data': '../geojson_common/chuo.geojson'
+        });
+
+        // Add a layer showing the city polygons.
+        map.addLayer({
+            'id': '中央区',
+            'type': 'fill',
+            'source': 'chuoward',
+            'layout': {
+                'visibility': 'visible'
+            },
+            'paint': {
+                'fill-color': 'rgba(0,0,255,.3)'
+            }
+        });
+
+        // Add a source for the city polygons.
+        map.addSource('minatoward', {
+            'type': 'geojson',
+            'data': '../geojson_common/minato.geojson'
+        });
+
+        // Add a layer showing the city polygons.
+        map.addLayer({
+            'id': '港区',
+            'type': 'fill',
+            'source': 'minatoward',
+            'layout': {
+                'visibility': 'visible'
+            },
+            'paint': {
+                'fill-color': 'rgba(0,128,0,.3)'
+            }
+        });
+
+        // Add a source for the city polygons.
+        map.addSource('shibuyaward', {
+            'type': 'geojson',
+            'data': '../geojson_common/shibuya.geojson'
+        });
+
+        // Add a layer showing the city polygons.
+        map.addLayer({
+            'id': '渋谷区',
+            'type': 'fill',
+            'source': 'shibuyaward',
+            'layout': {
+                'visibility': 'visible'
+            },
+            'paint': {
+                'fill-color': 'rgba(255,255,0,.3)'
+            }
+        });
+
+        // Add a source for the city polygons.
+        map.addSource('shinjukuward', {
+            'type': 'geojson',
+            'data': '../geojson_common/shinjuku.geojson'
+        });
+
+        // Add a layer showing the city polygons.
+        map.addLayer({
+            'id': '新宿区',
+            'type': 'fill',
+            'source': 'shinjukuward',
+            'layout': {
+                'visibility': 'visible'
+            },
+            'paint': {
+                'fill-color': 'rgba(128,0,128,.3)'
+            }
+        });
+
+
         //##### 指標データ #####//
-        map.addSource('high_class_hotels', {
+        map.addSource('startups', {
             type: 'geojson',
             // Use a URL for the value for the `data` property.
-            data: './geojson/high_class_hotels.geojson' 
+            data: './geojson/startups_2023.geojson' 
         });
 
         map.addLayer({
-            'id': 'high_class_hotels-layer',
+            'id': 'startups-layer',
             'type': 'circle',
-            'source': 'high_class_hotels',
+            'source': 'startups',
             'paint': {
-                'circle-radius': 5,
+                'circle-radius': 3,
                 'circle-stroke-width': 1,
                 'circle-color': 'blue',
                 'circle-stroke-color': 'white'
@@ -108,35 +198,8 @@ body { margin: 0; padding: 0; }
             }
         });
 
-        //##### Fly to 機能 #####//
-        document.getElementById("fly").select.onchange = function() {
-            var target = document.getElementById("fly").select.value;
-            console.log(target)
 
-            switch (target) {
-                case "fly-tyo":
-                    map.flyTo({
-                    center: [139.7527758040573, 35.68535529255434],
-                    zoom: 11,
-                    essential: true
-                    });
-                    break;
-                case "fly-nyc":
-                    map.flyTo({
-                    center: [-73.98554260298089, 40.7581534610924],
-                    zoom: 11,
-                    essential: true
-                    });
-                    break;
-                case "fly-lon":
-                    map.flyTo({
-                    center: [-0.1280757371601969, 51.508110075964964],
-                    zoom: 11,
-                    essential: true
-                    });
-                    break;
-            }
-        };
+
 
         //##### Pop up 機能 #####//
         // Create a popup, but don't add it to the map yet.
@@ -145,7 +208,7 @@ body { margin: 0; padding: 0; }
         closeOnClick: false
         });
         
-        map.on('mouseenter', 'high_class_hotels-layer', (e) => {
+        map.on('mouseenter', 'startups-layer', (e) => {
         // Change the cursor style as a UI indicator.
         map.getCanvas().style.cursor = 'pointer';
         
@@ -165,7 +228,7 @@ body { margin: 0; padding: 0; }
         popup.setLngLat(coordinates).setHTML(description).addTo(map);
         });
         
-        map.on('mouseleave', 'high_class_hotels-layer', () => {
+        map.on('mouseleave', 'startups-layer', () => {
         map.getCanvas().style.cursor = '';
         popup.remove();
         });
