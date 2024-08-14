@@ -13,6 +13,17 @@
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+		<style>
+			section .center-vertically {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100%;
+			}
+		</style>
+
+
 	</head>
 	<body>
 		<div class="reveal">
@@ -184,12 +195,24 @@
 						<iframe class="stretch" data-src="./mapbox/population_density/pop_dens_japan.html" data-preload frameborder="0"
 							allowfullscreen></iframe>
 					</section>
-	
-					<!-- v-slide: Mapbox: スタートアップ -->
+
+					
+					<!-- slide: スタートアップ -->
 					<section>
+						<!-- slide: Chart.js: startups_GPCI -->
+						<section data-background-color="rgb(255, 255, 255)">
+							<iframe class="stretch center-vertically" data-src="./chartjs/startups/startups_gpci.html" data-preload frameborder="0"
+							allowfullscreen></iframe>
+						</section>
+						<!-- v-slide: Mapbox: スタートアップ -->
 						<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
 							<iframe class="stretch" data-src="./mapbox/startups/startups.html" data-preload frameborder="0"
-								allowfullscreen></iframe>
+							allowfullscreen></iframe>
+						</section>
+						<!-- slide: Chart.js: startups_Initial by category -->
+						<section data-background-color="rgb(255, 255, 255)">
+							<iframe class="stretch center-vertically" data-src="./chartjs/startups/startups_initial.html" data-preload frameborder="0"
+							allowfullscreen></iframe>
 						</section>
 					</section>
 	
