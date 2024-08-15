@@ -198,43 +198,52 @@ body { margin: 0; padding: 0; }
             }
         });
 
-
-
-
         //##### Pop up 機能 #####//
         // Create a popup, but don't add it to the map yet.
         const popup = new mapboxgl.Popup({
-        closeButton: false,
-        closeOnClick: false
+            closeButton: true, // Enable the close button
+            closeOnClick: false
         });
-        
+
         map.on('mouseenter', 'startups-layer', (e) => {
-        // Change the cursor style as a UI indicator.
-        map.getCanvas().style.cursor = 'pointer';
-        
-        // Copy coordinates array.
-        const coordinates = e.features[0].geometry.coordinates.slice();      
-        const description = e.features[0].properties["Name"];
-        
-        // Ensure that if the map is zoomed out such that multiple
-        // copies of the feature are visible, the popup appears
-        // over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-        
-        // Populate the popup and set its coordinates
-        // based on the feature found.
-        popup.setLngLat(coordinates).setHTML(description).addTo(map);
+            // Change the cursor style as a UI indicator.
+            map.getCanvas().style.cursor = 'pointer';
+            
+            // Copy coordinates array.
+            const coordinates = e.features[0].geometry.coordinates.slice();      
+            
+            // Get the name and URL from the feature properties
+            const name = e.features[0].properties["Name"];
+            const url = e.features[0].properties["URL"];
+            
+            // Create a description with a clickable link
+            const description = `
+                <div>
+                    <p>${name}</p>
+                    <p><a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a></p>
+                </div>
+            `;
+            
+            // Ensure that if the map is zoomed out such that multiple
+            // copies of the feature are visible, the popup appears
+            // over the copy being pointed to.
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            }
+            
+            // Populate the popup and set its coordinates
+            // based on the feature found.
+            popup.setLngLat(coordinates).setHTML(description).addTo(map);
         });
-        
+
         map.on('mouseleave', 'startups-layer', () => {
-        map.getCanvas().style.cursor = '';
-        popup.remove();
+            map.getCanvas().style.cursor = '';
+            // We do not remove the popup on mouse leave anymore
         });
 
         //##### Navigation Control #####//
         map.addControl(new mapboxgl.NavigationControl());
+
 
     });
 

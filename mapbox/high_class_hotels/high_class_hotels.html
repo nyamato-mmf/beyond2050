@@ -55,6 +55,8 @@ body { margin: 0; padding: 0; }
             <option value="fly-tyo">Tokyo</option>
             <option value="fly-nyc">New York</option>
             <option value="fly-lon">London</option>
+            <option value="fly-par">Paris</option>
+            <option value="fly-sin">Singapore</option>
         </select>
     </form>    
 </div>
@@ -131,6 +133,20 @@ body { margin: 0; padding: 0; }
                 case "fly-lon":
                     map.flyTo({
                     center: [-0.1280757371601969, 51.508110075964964],
+                    zoom: 11,
+                    essential: true
+                    });
+                    break;
+                case "fly-par":
+                    map.flyTo({
+                    center: [2.3553137, 48.8809481],
+                    zoom: 11,
+                    essential: true
+                    });
+                    break;
+                case "fly-sin":
+                    map.flyTo({
+                    center: [103.8513365, 1.2830173],
                     zoom: 11,
                     essential: true
                     });

@@ -62,7 +62,7 @@
 					<section>
 						<h3>Beyond 2050</h3>
 						<h6>線形回帰モデル</h6>
-						<p>
+						<p style="font-size: 22pt;">
 							<script type="text/x-mathjax-config">
 								MathJax.Hub.Config({
 									TeX: {
@@ -74,31 +74,40 @@
 							</script>
 							\( \text{y} = \theta_0 + \theta_1 \cdot x_1 + \theta_2 \cdot x_2 + \cdots + \theta_n \cdot x_n \)
 						</p>
-					  </section>
-						<!-- slide: 相関係数-p値の散布図-->
-						<section data-background-color="white">
-							<div style="display: flex; justify-content: center; gap: 20px; position: relative;">
-								<div style="display: flex; justify-content: center; align-items: center;">
-									<img data-src="./img/coefficient_p-value.png" width="750">
-									<p style="
-										position: absolute; 
-										top: 150px; 
-										left: 300px; 
-										color: white; 
-										background-color: rgba(0, 0, 0, 0.5); 
-										padding: 5px; 
-										border-radius: 5px;
-										font-size: 14px;">
-										相関係数が高く、統計的に有意と考えられる指標の絞り込み
-									</p>
-								</div>
+					</section>
+
+					<!-- slide: 外国人居住者数のグラフ -->
+					<section data-background-color="white">
+						<div style="display: flex; justify-content: center; align-items: center;">
+							<img src="./img/foreign_residents_barh.png" alt="Foreign Residents Bar Chart" style="max-height: 90vh;">
+						</div>
+					</section>	
+					
+					<!-- slide: 相関係数-p値の散布図-->
+					<section data-background-color="white">
+						<div style="display: flex; justify-content: center; gap: 20px; position: relative;">
+							<div style="display: flex; justify-content: center; align-items: center;">
+								<img data-src="./img/coefficient_p-value_residents.png" width="750">
+								<p style="
+									position: absolute; 
+									top: 150px; 
+									left: 300px; 
+									color: white; 
+									background-color: rgba(0, 0, 0, 0.5); 
+									padding: 5px; 
+									border-radius: 5px;
+									font-size: 14px;">
+									相関係数が高く、統計的に有意と考えられる指標の絞り込み
+								</p>
 							</div>
-						</section>
+						</div>
+					</section>
+					
 					<!-- slide: ヒートマップ（相関係数とp値でフィルタリング後）-->
 					<section data-background-color="white">
 						<div style="display: flex; justify-content: center; gap: 20px;">
 							<div style="display: flex; justify-content: center; align-items: center;">
-								<img data-src="./img/heatmap_coefficient_p-value.png" width="750">
+								<img data-src="./img/heatmap_coefficient_p-value_residents.png" width="750">
 							</div>
 						</div>
 					</section>
@@ -106,7 +115,7 @@
 					<section data-background-color="white">
 						<div style="display: flex; justify-content: center; gap: 20px;">
 							<div style="display: flex; justify-content: center; align-items: center;">
-								<img data-src="./img/heatmap_exclude_multicollinearity.png" width="750">
+								<img data-src="./img/heatmap_exclude_multicollinearity_residents.png" width="750">
 							</div>
 						</div>
 					</section>
@@ -114,7 +123,7 @@
 					<section data-background-color="white">
 						<div style="display: flex; justify-content: center; gap: 20px;">
 							<div style="display: flex; justify-content: center; align-items: center;">
-								<img data-src="./img/heatmap_selected_indicators.png" width="750">
+								<img data-src="./img/heatmap_selected_indicators_residents.png" width="750">
 							</div>
 						</div>
 					</section>
@@ -122,64 +131,86 @@
 					<section data-background-color="white">
 						<div style="display: flex; justify-content: center; gap: 20px;">
 							<div style="display: flex; justify-content: center; align-items: center;">
-								<img data-src="./img/coef.png" height="650">
+								<img data-src="./img/coef_residents.png" height="650">
 							</div>
 						</div>
 					</section>
-
+					
+					<!-- slide: 外国人訪問者数のグラフ -->
+					<section data-background-color="white">
+						<div style="display: flex; justify-content: center; align-items: center;">
+							<img src="./img/foreign_visitors_barh.png" alt="Foreign Residents Bar Chart" style="max-height: 90vh;">
+						</div>
+					</section>	
+					<!-- slide: 各説明変数の相関係数-->
+					<section data-background-color="white">
+						<div style="display: flex; justify-content: center; gap: 20px;">
+							<div style="display: flex; justify-content: center; align-items: center;">
+								<img data-src="./img/coef_visitors.png" height="650">
+							</div>
+						</div>
+					</section>
+									
+					
 					<!-- slide: 対象指標一覧 -->
-					<section>
-						<h4>指標一覧</h4>
-						<table style="font-size: 0.5em; width: 80%; margin: 0 auto; border-collapse: collapse;">
+					<section data-background-color="white">
+						<p style="font-size: 22pt;">回帰係数が高い指標（和集合）</p>
+						<table style="font-size: 0.4em; width: 80%; margin: 0 auto; border-collapse: collapse;">
 							<tr>
 								<th style="padding: 5px; border: 1px solid #000; background-color: gray; text-align: center;">分野</th>
 								<th style="padding: 5px; border: 1px solid #000; background-color: gray; text-align: center;">指標</th>
 							</tr>
 							<tr>
 								<td style="padding: 5px; border: 1px solid #000; background-color: #917099;" rowspan="2">経済</td>
-								<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+								<td style="padding: 5px; border: 1px solid #000; background-color:rgba(145, 112, 153, 0.5);">賃金水準</td>
 							</tr>
 							<tr>
-								<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(145, 112, 153, 0.5);">政治・経済・商機のリスクの低さ</td>
 							</tr>
 							<tr>
 								<td style="padding: 5px; border: 1px solid #000; background-color: #738cac;" rowspan="2">研究・開発</td>
-								<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(115, 140, 172, 0.5);">留学生数</td>
 							</tr>
 							<tr>
-								<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(115, 140, 172, 0.5);">スタートアップ数</td>
 							</tr>
 							<tr>
-								<td style="padding: 5px; border: 1px solid #000; background-color: #de819a;" rowspan="3">文化・交流</td>
-								<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+								<td style="padding: 5px; border: 1px solid #000; background-color: #de819a;" rowspan="6">文化・交流</td>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(222, 129, 154, 0.5);">アート市場規模</td>
 							</tr>
 							<tr>
-								<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(222, 129, 154, 0.5);">観光地の充実度</td>
 							</tr>
 							<tr>
-								<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(222, 129, 154, 0.5);">スタジアム数</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(222, 129, 154, 0.5);">ホテル客室数</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(222, 129, 154, 0.5);">ハイクラスホテル客室数</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(222, 129, 154, 0.5);">買い物の魅力</td>
 							</tr>
 							
 							<tr>
 								<td style="padding: 5px; border: 1px solid #000; background-color: #71c2de;" rowspan="2">居住</td>
-								<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(113,194,222,0.5);">メンタルヘルス水準</td>
 							</tr>
 							<tr>
-								<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(113,194,222,0.5);">小売店舗の多さ</td>
 							</tr>
 							<tr>
-								<td style="padding: 5px; border: 1px solid #000; background-color: #9cb866;" rowspan="2">環境</td>
-								<td style="padding: 5px; border: 1px solid #000;">あああ</td>
-							</tr>
-							<tr>
-								<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+								<td style="padding: 5px; border: 1px solid #000; background-color: #9cb866;" rowspan="1">環境</td>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(156,184,102,0.5);">都市空間の清潔さ</td>
 							</tr>
 							<tr>
 								<td style="padding: 5px; border: 1px solid #000; background-color: #eeaa3d;" rowspan="2">交通・アクセス</td>
-								<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(238,170,61,0.5);">国際線直行便就航都市数</td>
 							</tr>
 							<tr>
-								<td style="padding: 5px; border: 1px solid #000;">あああ</td>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(238,170,61,0.5);">自動車の移動速度</td>
 							</tr>
 						</table>
 					</section>
@@ -188,75 +219,73 @@
 
 
 				<!-- ====================== マップ ====================== -->
-				<section><h3>Tokyo from multiple perspectives</h1></section>
+				<!-- slide: Mapbox: ★★★ Population Density Japan ★★★ -->
+				<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
+					<iframe class="stretch" data-src="./mapbox/population_density/pop_dens_japan.html" data-preload frameborder="0"
+						allowfullscreen></iframe>
+				</section>
 
-					<!-- slide: Mapbox: ★★★ Population Density Japan ★★★ -->
+				
+				<!-- slide: スタートアップ -->
+				<section>
+					<!-- slide: Chart.js: startups_GPCI -->
+					<section data-background-color="rgb(255, 255, 255)">
+						<iframe class="stretch center-vertically" data-src="./chartjs/startups/startups_gpci.html" data-preload frameborder="0"
+						allowfullscreen></iframe>
+					</section>
+					<!-- v-slide: Mapbox: スタートアップ -->
 					<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
-						<iframe class="stretch" data-src="./mapbox/population_density/pop_dens_japan.html" data-preload frameborder="0"
+						<iframe class="stretch" data-src="./mapbox/startups/startups.html" data-preload frameborder="0"
+						allowfullscreen></iframe>
+					</section>
+					<!-- slide: Chart.js: startups_Initial by category -->
+					<section data-background-color="rgb(255, 255, 255)">
+						<iframe class="stretch center-vertically" data-src="./chartjs/startups/startups_initial.html" data-preload frameborder="0"
+						allowfullscreen></iframe>
+					</section>
+				</section>
+
+				<!-- v-slide: Mapbox: ハイクラスホテル客室数 -->
+				<section>
+					<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
+						<iframe class="stretch" data-src="./mapbox/high_class_hotels/high_class_hotels.html" data-preload frameborder="0"
 							allowfullscreen></iframe>
 					</section>
+				</section>
 
+				<!-- slide: Mapbox: ★★★ Population History Tokyo ★★★ -->
+				<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
+					<iframe class="stretch" data-src="./mapbox/population_history/pop_history_tyo.html" data-preload frameborder="0"
+						allowfullscreen></iframe>
+					</section>
 					
-					<!-- slide: スタートアップ -->
-					<section>
-						<!-- slide: Chart.js: startups_GPCI -->
-						<section data-background-color="rgb(255, 255, 255)">
-							<iframe class="stretch center-vertically" data-src="./chartjs/startups/startups_gpci.html" data-preload frameborder="0"
-							allowfullscreen></iframe>
-						</section>
-						<!-- v-slide: Mapbox: スタートアップ -->
-						<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
-							<iframe class="stretch" data-src="./mapbox/startups/startups.html" data-preload frameborder="0"
-							allowfullscreen></iframe>
-						</section>
-						<!-- slide: Chart.js: startups_Initial by category -->
-						<section data-background-color="rgb(255, 255, 255)">
-							<iframe class="stretch center-vertically" data-src="./chartjs/startups/startups_initial.html" data-preload frameborder="0"
-							allowfullscreen></iframe>
-						</section>
-					</section>
-	
-					<!-- v-slide: Mapbox: ハイクラスホテル客室数 -->
-					<section>
-						<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
-							<iframe class="stretch" data-src="./mapbox/high_class_hotels/high_class_hotels.html" data-preload frameborder="0"
-								allowfullscreen></iframe>
-						</section>
-					</section>
-	
-					<!-- slide: Mapbox: ★★★ Population History Tokyo ★★★ -->
+					<!-- Vertical slide: Mapbox: ★★★ Global Cities Population Density ★★★ -->
+				<section>
 					<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
-						<iframe class="stretch" data-src="./mapbox/population_history/pop_history_tyo.html" data-preload frameborder="0"
+						<iframe class="stretch" data-src="./mapbox/global_cities/pop_dens_lon.html" data-preload frameborder="0"
 							allowfullscreen></iframe>
-						</section>
-						
-						<!-- Vertical slide: Mapbox: ★★★ Global Cities Population Density ★★★ -->
-					<section>
-						<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
-							<iframe class="stretch" data-src="./mapbox/global_cities/pop_dens_lon.html" data-preload frameborder="0"
-								allowfullscreen></iframe>
-						</section>
-						<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
-							<iframe class="stretch" data-src="./mapbox/global_cities/pop_dens_nyc.html" data-preload frameborder="0"
-								allowfullscreen></iframe>
-						</section>
-						<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
-							<iframe class="stretch" data-src="./mapbox/global_cities/pop_dens_tyo.html" data-preload frameborder="0"
-								allowfullscreen></iframe>
-						</section>
 					</section>
-	
-					<!-- v-slide: Mapbox: 緑地 -->
-					<section>
-						<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
-							<iframe class="stretch" data-src="./mapbox/green/green_lon.html" data-preload frameborder="0"
-								allowfullscreen></iframe>
-						</section>
-						<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
-							<iframe class="stretch" data-src="./mapbox/green/green_nyc.html" data-preload frameborder="0"
-								allowfullscreen></iframe>
-						</section>
+					<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
+						<iframe class="stretch" data-src="./mapbox/global_cities/pop_dens_nyc.html" data-preload frameborder="0"
+							allowfullscreen></iframe>
 					</section>
+					<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
+						<iframe class="stretch" data-src="./mapbox/global_cities/pop_dens_tyo.html" data-preload frameborder="0"
+							allowfullscreen></iframe>
+					</section>
+				</section>
+
+				<!-- v-slide: Mapbox: 緑地 -->
+				<section>
+					<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
+						<iframe class="stretch" data-src="./mapbox/green/green_lon.html" data-preload frameborder="0"
+							allowfullscreen></iframe>
+					</section>
+					<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
+						<iframe class="stretch" data-src="./mapbox/green/green_nyc.html" data-preload frameborder="0"
+							allowfullscreen></iframe>
+					</section>
+				</section>
 	
 	
 
