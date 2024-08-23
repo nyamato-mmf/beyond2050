@@ -41,11 +41,19 @@
             // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
             style: 'mapbox://styles/mapbox/satellite-v9',
             projection: 'globe', // Display the map as a globe, since satellite-v9 defaults to Mercator
-            center: [136.1910732470767, 36.99271258040413],
-            zoom: 6,
-            maxZoom: 9,
-            minZoom:6,
-            pitch: 50,
+            zoom: 5,
+            pitch: 10,
+            center: [139.7682320401466, 35.42694411416717],
+        });
+
+        map.on('style.load', () => {
+            map.setFog({
+                color: 'rgb(186, 210, 235)', // Lower atmosphere
+                'high-color': 'rgb(36, 92, 223)', // Upper atmosphere
+                'horizon-blend': 0.02, // Atmosphere thickness (default 0.2 at low zooms)
+                'space-color': 'rgb(11, 11, 25)', // Background color
+                'star-intensity': 0.6 // Background star brightness (default 0.35 at low zoooms )
+            });
         });
 
 
@@ -68,27 +76,27 @@
                         ['linear'],
                         ['get', '人口密度'],
                         0,
-                        '#768C6D',
+                        '#3288bd',  // Cool Blue
+                        100,
+                        '#66c2a5',  // Turquoise
+                        250,
+                        '#abdda4',  // Light Green
+                        500,
+                        '#e6f598',  // Pale Yellow
                         1000,
-                        '#CFDF78',
-                        2500,
-                        '#E6B71E',
+                        '#fee08b',  // Light Orange
                         5000,
-                        '#DA9C20',
+                        '#fdae61',  // Orange
                         10000,
-                        '#B86B25',
+                        '#f46d43',  // Red-Orange
                         15000,
-                        '#A25626',
+                        '#d53e4f',  // Red
                         20000,
-                        '#8B4225',
-                        25000,
-                        '#723122',
-                        30000,
-                        '#441D14'
+                        '#d53e4f'   // Red
                     ],
 
                     // Get `fill-extrusion-height` from the source `height` property.
-                    'fill-extrusion-height': ['get', '人口密度'],
+                    'fill-extrusion-height': ['*', ['get', '人口密度'], 10],
 
                     // Get `fill-extrusion-base` from the source `base_height` property.['get', 'base_height']
                     'fill-extrusion-base': 0,
