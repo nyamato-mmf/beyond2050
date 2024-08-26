@@ -16,3 +16,6 @@ _xlsx/*
 _tif/*
 _python/*
 _old/*
+*.ipynb
+01_geocoding_Arr_cities.ipynb
+02_csv to geojson.ipynb
