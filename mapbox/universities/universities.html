@@ -111,6 +111,22 @@ body { margin: 0; padding: 0; }
             }
         });
 
+        //##### 半径 50km データ #####//
+        map.addSource('radius', {
+            type: 'geojson',
+            // Use a URL for the value for the `data` property.
+            data: '../geojson_common/radius_50km.geojson' 
+        });
+
+        map.addLayer({
+            'id': 'radius-layer',
+            'type': 'line',
+            'source': 'radius',
+            'paint': {
+                'line-color': 'yellow',
+            }
+        });
+
 
         //##### Fly to 機能 #####//
         document.getElementById("fly").select.onchange = function() {
