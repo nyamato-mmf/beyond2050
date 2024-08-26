@@ -112,16 +112,16 @@ body { margin: 0; padding: 0; }
         });
 
         //##### 半径 50km データ #####//
-        map.addSource('radius', {
+        map.addSource('radius_50km', {
             type: 'geojson',
             // Use a URL for the value for the `data` property.
             data: '../geojson_common/radius_50km.geojson' 
         });
 
         map.addLayer({
-            'id': 'radius-layer',
+            'id': 'radius-layer_50km',
             'type': 'line',
-            'source': 'radius',
+            'source': 'radius_50km',
             'paint': {
                 'line-color': 'yellow',
             }
