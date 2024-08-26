@@ -48,13 +48,15 @@ body { margin: 0; padding: 0; }
 
 <!-- Sidebar -->
 <div id="sidebar">
-    <h1 class="indicator-title">Stations</h1>
+    <h1 class="indicator-title">Universities</h1>
     <form id="fly">
         <!-- Select a city to fly to -->
         <select name="select">
             <option value="fly-tyo">Tokyo</option>
             <option value="fly-nyc">New York</option>
             <option value="fly-lon">London</option>
+            <option value="fly-par">Paris</option>
+            <option value="fly-sin">Singapore</option>
         </select>
     </form>    
 </div>
@@ -74,16 +76,16 @@ body { margin: 0; padding: 0; }
     map.on('load', () => {
 
         //##### 指標データ #####//
-        map.addSource('stations', {
+        map.addSource('universities', {
             type: 'geojson',
             // Use a URL for the value for the `data` property.
-            data: './geojson/stations_2020.geojson' 
+            data: './geojson/universities_2020.geojson' 
         });
 
         map.addLayer({
-            'id': 'stations-layer',
+            'id': 'universities-layer',
             'type': 'circle',
-            'source': 'stations',
+            'source': 'universities',
             'paint': {
                 'circle-radius': 5,
                 'circle-stroke-width': 1,
@@ -116,28 +118,42 @@ body { margin: 0; padding: 0; }
             console.log(target)
 
             switch (target) {
-                case "fly-tyo":
-                    map.flyTo({
-                    center: [139.7527758040573, 35.68535529255434],
-                    zoom: 11,
-                    essential: true
-                    });
-                    break;
-                case "fly-nyc":
-                    map.flyTo({
-                    center: [-73.98554260298089, 40.7581534610924],
-                    zoom: 11,
-                    essential: true
-                    });
-                    break;
-                case "fly-lon":
-                    map.flyTo({
-                    center: [-0.1280757371601969, 51.508110075964964],
-                    zoom: 11,
-                    essential: true
-                    });
-                    break;
-            }
+                    case "fly-tyo":
+                        map.flyTo({
+                            center: [139.7527758040573, 35.68535529255434],
+                            zoom: 11,
+                            essential: true
+                        });
+                        break;
+                    case "fly-nyc":
+                        map.flyTo({
+                            center: [-73.98554260298089, 40.7581534610924],
+                            zoom: 11,
+                            essential: true
+                        });
+                        break;
+                    case "fly-lon":
+                        map.flyTo({
+                            center: [-0.1280757371601969, 51.508110075964964],
+                            zoom: 11,
+                            essential: true
+                        });
+                        break;
+                    case "fly-par":
+                        map.flyTo({
+                            center: [2.3553137, 48.8809481],
+                            zoom: 11,
+                            essential: true
+                        });
+                        break;
+                    case "fly-sin":
+                        map.flyTo({
+                            center: [103.8513365, 1.2830173],
+                            zoom: 11,
+                            essential: true
+                        });
+                        break;
+                }
         };
 
         //##### Pop up 機能 #####//
@@ -147,7 +163,7 @@ body { margin: 0; padding: 0; }
         closeOnClick: false
         });
         
-        map.on('mouseenter', 'stations-layer', (e) => {
+        map.on('mouseenter', 'universities-layer', (e) => {
         // Change the cursor style as a UI indicator.
         map.getCanvas().style.cursor = 'pointer';
         
@@ -167,7 +183,7 @@ body { margin: 0; padding: 0; }
         popup.setLngLat(coordinates).setHTML(description).addTo(map);
         });
         
-        map.on('mouseleave', 'stations-layer', () => {
+        map.on('mouseleave', 'universities-layer', () => {
         map.getCanvas().style.cursor = '';
         popup.remove();
         });
