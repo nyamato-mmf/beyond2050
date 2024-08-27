@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="jp">
+<html lang="ja">
 
 <head>
     <meta charset="utf-8">
@@ -41,19 +41,19 @@
             // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
             style: 'mapbox://styles/mapbox/satellite-v9',
             projection: 'globe', // Display the map as a globe, since satellite-v9 defaults to Mercator
-            center: [139.7527758040573, 35.68535529255434], //Lon Lat
-            zoom: 9,
+            center: [-0.12808341534292772, 51.50814953830896],
+            zoom: 6,
             pitch: 50,
         });
 
 
         map.on('load', () => {
 
-            //##### Density #####//
+            //##### Pop_dens #####//
             // Add a source for the city polygons.
             map.addSource('density', {
                 'type': 'geojson',
-                'data': 'TYO_50km.geojson'
+                'data': 'LON_50km.geojson'
             });
             map.addLayer({
                 'id': 'density',
@@ -64,29 +64,29 @@
                     'fill-extrusion-color': [
                         'interpolate',
                         ['linear'],
-                        ['get', 'Density'],
+                        ['get', 'Pop_dens'],
                         0,
-                        '#768C6D',
+                        '#3288bd',  // Cool Blue
+                        100,
+                        '#66c2a5',  // Turquoise
+                        250,
+                        '#abdda4',  // Light Green
+                        500,
+                        '#e6f598',  // Pale Yellow
                         1000,
-                        '#CFDF78',
-                        2500,
-                        '#E6B71E',
+                        '#fee08b',  // Light Orange
                         5000,
-                        '#DA9C20',
+                        '#fdae61',  // Orange
                         10000,
-                        '#B86B25',
+                        '#f46d43',  // Red-Orange
                         15000,
-                        '#A25626',
+                        '#d53e4f',  // Red
                         20000,
-                        '#8B4225',
-                        25000,
-                        '#723122',
-                        30000,
-                        '#441D14'
+                        '#d53e4f'   // Red
                     ],
 
                     // Get `fill-extrusion-height` from the source `height` property.
-                    'fill-extrusion-height': ['get', 'Density'],
+                    'fill-extrusion-height': ['*', ['get', 'Pop_dens'], 10],
 
                     // Get `fill-extrusion-base` from the source `base_height` property.['get', 'base_height']
                     'fill-extrusion-base': 0,
@@ -102,7 +102,7 @@
         map.on('click', 'density', function (e) {
             new mapboxgl.Popup()
                 .setLngLat(e.lngLat)
-                .setHTML(e.features[0].properties["NAME"] + ": " + parseInt(e.features[0].properties["Density"]).toLocaleString() + "人/㎢")
+                .setHTML(e.features[0].properties["geo_label"] + ": " + parseInt(e.features[0].properties["Pop_dens"]).toLocaleString() + "人/㎢")
                 .addTo(map);
         });
 

@@ -48,13 +48,16 @@ body { margin: 0; padding: 0; }
 
 <!-- Sidebar -->
 <div id="sidebar">
-    <h1 class="indicator-title">公共交通（駅）</h1>
+    <h1 class="indicator-title">観光スポット</h1>
+    <p style="color: white; font-size: 16pt;">(レビュー数: 1000以上)</p>
     <form id="fly">
         <!-- Select a city to fly to -->
         <select name="select">
             <option value="fly-tyo">Tokyo</option>
             <option value="fly-nyc">New York</option>
             <option value="fly-lon">London</option>
+            <option value="fly-par">Paris</option>
+            <option value="fly-sin">Singapore</option>
         </select>
     </form>    
 </div>
@@ -74,23 +77,31 @@ body { margin: 0; padding: 0; }
     map.on('load', () => {
 
         //##### 指標データ #####//
-        map.addSource('stations', {
+        map.addSource('tourist_attractions', {
             type: 'geojson',
             // Use a URL for the value for the `data` property.
-            data: './geojson/stations_2020.geojson' 
+            data: './geojson/tourist_attractions.geojson' 
         });
 
         map.addLayer({
-            'id': 'stations-layer',
+            'id': 'tourist_attractions-layer',
             'type': 'circle',
-            'source': 'stations',
+            'source': 'tourist_attractions',
             'paint': {
-                'circle-radius': 5,
+                // Adjust circle radius based on the 'radius' property in the GeoJSON file
+                'circle-radius': [
+                    'interpolate', 
+                    ['linear'], 
+                    ['get', 'Reviews'], 
+                    1000, 5,  // Minimum value (1) maps to a circle radius of 2
+                    150000, 50 // Maximum value (10) maps to a circle radius of 20
+                ],
                 'circle-stroke-width': 1,
                 'circle-color': 'blue',
                 'circle-stroke-color': 'white'
             }
         });
+
 
 
         //##### 半径 5-10km データ #####//
@@ -110,34 +121,49 @@ body { margin: 0; padding: 0; }
         });
 
 
+
         //##### Fly to 機能 #####//
         document.getElementById("fly").select.onchange = function() {
             var target = document.getElementById("fly").select.value;
             console.log(target)
 
             switch (target) {
-                case "fly-tyo":
-                    map.flyTo({
-                    center: [139.7527758040573, 35.68535529255434],
-                    zoom: 11,
-                    essential: true
-                    });
-                    break;
-                case "fly-nyc":
-                    map.flyTo({
-                    center: [-73.98554260298089, 40.7581534610924],
-                    zoom: 11,
-                    essential: true
-                    });
-                    break;
-                case "fly-lon":
-                    map.flyTo({
-                    center: [-0.1280757371601969, 51.508110075964964],
-                    zoom: 11,
-                    essential: true
-                    });
-                    break;
-            }
+                    case "fly-tyo":
+                        map.flyTo({
+                            center: [139.7527758040573, 35.68535529255434],
+                            zoom: 11,
+                            essential: true
+                        });
+                        break;
+                    case "fly-nyc":
+                        map.flyTo({
+                            center: [-73.98554260298089, 40.7581534610924],
+                            zoom: 11,
+                            essential: true
+                        });
+                        break;
+                    case "fly-lon":
+                        map.flyTo({
+                            center: [-0.1280757371601969, 51.508110075964964],
+                            zoom: 11,
+                            essential: true
+                        });
+                        break;
+                    case "fly-par":
+                        map.flyTo({
+                            center: [2.3553137, 48.8809481],
+                            zoom: 11,
+                            essential: true
+                        });
+                        break;
+                    case "fly-sin":
+                        map.flyTo({
+                            center: [103.8513365, 1.2830173],
+                            zoom: 11,
+                            essential: true
+                        });
+                        break;
+                }
         };
 
         //##### Pop up 機能 #####//
@@ -147,13 +173,14 @@ body { margin: 0; padding: 0; }
         closeOnClick: false
         });
         
-        map.on('mouseenter', 'stations-layer', (e) => {
+        map.on('mouseenter', 'tourist_attractions-layer', (e) => {
         // Change the cursor style as a UI indicator.
         map.getCanvas().style.cursor = 'pointer';
         
         // Copy coordinates array.
         const coordinates = e.features[0].geometry.coordinates.slice();      
-        const description = e.features[0].properties["Name"];
+        const univ_name = e.features[0].properties["Spot"];
+        const num_tourist_attractions = e.features[0].properties["Reviews"];
         
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
@@ -164,10 +191,10 @@ body { margin: 0; padding: 0; }
         
         // Populate the popup and set its coordinates
         // based on the feature found.
-        popup.setLngLat(coordinates).setHTML(description).addTo(map);
+        popup.setLngLat(coordinates).setHTML(univ_name + "<br>" + "レビュー数:" + num_tourist_attractions).addTo(map);
         });
         
-        map.on('mouseleave', 'stations-layer', () => {
+        map.on('mouseleave', 'tourist_attractions-layer', () => {
         map.getCanvas().style.cursor = '';
         popup.remove();
         });
