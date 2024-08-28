@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Document</title>
+<link rel="icon" href="../../img/favicon.ico">
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+
+<!-- mapbox -->   
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+/* カスタムポップアップ */
+.popupCustom .mapboxgl-popup-content {
+    width: 960px;
+    height: 600px;
+    font: 14px Arial, sans-serif;
+    }
+
+
+</style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoibnlhbWF0byIsImEiOiJja2Y4dzNkOW8wY3MwMnFvM29iNnJzNzVzIn0.GHlHwu3r5YjKBU3qAKvccQ';
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/satellite-v9',
+        projection: 'globe', // Display the map as a globe, since satellite-v9 defaults to Mercator
+        zoom: 14, // starting zoom
+        center: [139.76504868387178, 35.67129573187719] // starting center
+    });
+
+
+
+    /* --------------------------------------------------------
+    　映像
+    -------------------------------------------------------- */
+    map.loadImage(
+    'marker-1850.png',
+    (error, image) => {
+        if (error) throw error;
+
+        // Add the image to the map style.
+        map.addImage('icon_1850', image);
+
+        // Add a data source containing several points' features.
+        map.addSource('video_1850', {
+            'type': 'geojson',
+            'data': {
+                'type': 'FeatureCollection',
+                'features': [
+                    {
+                        'type': 'Feature',
+                        'properties': {
+                            "name": "銀座 (1850年代)",
+                            'description':
+                                '<strong>銀座 (1850年代)</strong><p><iframe width="960" height="540" src="https://www.tokyotimemachine.com/virtualginza/index.htm?media-index=9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe></p>',
+                        },
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [139.76504868387178, 35.67129573187719]
+                        }
+                    },
+                ]
+            }
+        });
+
+        // Add a layer to use the image to represent the data.
+        map.addLayer({
+            'id': 'video_1850',
+            'type': 'symbol',
+            'source': 'video_1850', // reference the data source
+            'layout': {
+                'icon-image': 'icon_1850', // reference the image
+                'icon-size': 1,
+                'visibility': 'visible'
+            },
+        });
+
+        // On click, get coordinates and a description.
+        map.on('click', 'video_1850', (e) => {
+            const coordinates = e.features[0].geometry.coordinates.slice();
+            const description = e.features[0].properties.description;
+
+            // Offset the latitude (coordinates[1]) slightly to move the popup above the marker
+            const offset_x = 0.01; // Adjust this value as needed
+            const offset_y = 0.01; // Adjust this value as needed
+            coordinates[0] -= offset_x;
+            coordinates[1] += offset_y;
+
+            // Create a popup object
+            new mapboxgl.Popup({className: 'popupCustom'})
+                .setLngLat(coordinates)
+                .setHTML(description)
+                .addTo(map);
+        });
+
+        map.on('mouseenter', 'video_1850', () => {
+            map.getCanvas().style.cursor = 'pointer';
+        });
+
+        map.on('mouseleave', 'video_1850', () => {
+            map.getCanvas().style.cursor = '';
+        });
+    }
+);
+
+
+
+</script>
+
+</body>
+</html>

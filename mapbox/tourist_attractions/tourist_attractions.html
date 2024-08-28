@@ -2,11 +2,11 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Load data from an external GeoJSON file</title>
+<title>Document</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 <!-- mapbox -->   
-<link href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet">
-<script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.css' rel='stylesheet' />
 <style>
 body { margin: 0; padding: 0; }
 #map { position: absolute; top: 0; bottom: 0; width: 100%; }
@@ -48,8 +48,8 @@ body { margin: 0; padding: 0; }
 
 <!-- Sidebar -->
 <div id="sidebar">
-    <h1 class="indicator-title">観光スポット</h1>
-    <p style="color: white; font-size: 16pt;">(レビュー数: 1000以上)</p>
+    <h1 class="indicator-title" style="color: black;">観光スポット</h1>
+    <p style="color: black; font-size: 16pt;">(レビュー数: 1000以上)</p>
     <form id="fly">
         <!-- Select a city to fly to -->
         <select name="select">
@@ -60,7 +60,7 @@ body { margin: 0; padding: 0; }
             <option value="fly-sin">Singapore</option>
         </select>
     </form>
-    <p style="font-size: small; color: white;">出典: TripAdvisor</p>
+    <p style="font-size: small; color: black;">出典: TripAdvisor</p>
 </div>
 
 <div id="map"></div>
@@ -69,7 +69,7 @@ body { margin: 0; padding: 0; }
     mapboxgl.accessToken = 'pk.eyJ1IjoibnlhbWF0byIsImEiOiJja2Y4dzNkOW8wY3MwMnFvM29iNnJzNzVzIn0.GHlHwu3r5YjKBU3qAKvccQ';
     const map = new mapboxgl.Map({
         container: 'map', // container ID
-        style: 'mapbox://styles/mapbox/satellite-v9',
+        style: 'mapbox://styles/nyamato/cm0dh0dhb00lv01om1b5wg4c5',
         projection: 'globe', // Display the map as a globe, since satellite-v9 defaults to Mercator
         zoom: 11, // starting zoom
         center: [139.7527758040573, 35.68535529255434] // starting center
@@ -99,7 +99,8 @@ body { margin: 0; padding: 0; }
                 ],
                 'circle-stroke-width': 1,
                 'circle-color': 'blue',
-                'circle-stroke-color': 'white'
+                'circle-opacity': 0.5,
+                'circle-stroke-color': 'white',
             }
         });
 
