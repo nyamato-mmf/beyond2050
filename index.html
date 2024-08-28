@@ -60,8 +60,7 @@
 				<!-- 相関係数（ヒートマップ） -->
 				<section>
 					<section>
-						<h3>Beyond 2050</h3>
-						<h6>線形回帰モデル</h6>
+						<h6>線形モデル</h6>
 						<p style="font-size: 22pt;">
 							<script type="text/x-mathjax-config">
 								MathJax.Hub.Config({
@@ -74,6 +73,9 @@
 							</script>
 							\( \text{y} = \theta_0 + \theta_1 \cdot x_1 + \theta_2 \cdot x_2 + \cdots + \theta_n \cdot x_n \)
 						</p>
+						<div style="display: flex; justify-content: center; align-items: center;">
+							<img src="./img/regression_analysis.png" alt="regression_analysis" style="max-height: 40vh;">
+						</div>
 					</section>
 
 					<!-- 外国人居住者数のグラフ -->
@@ -246,20 +248,20 @@
 					</section>
 
 					<!-- 緑地 -->
-					<section>
+					<div style="display: none;">
 						<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
 							<iframe class="stretch" data-src="./mapbox/green/green_coverage.html" data-preload frameborder="0"
 								allowfullscreen></iframe>
 						</section>
-					</section>
+					</div>
 	
 					<!-- 駅 -->
-					<section>
+					<div style="display: none;">
 						<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
 							<iframe class="stretch" data-src="./mapbox/stations/stations.html" data-preload frameborder="0"
 								allowfullscreen></iframe>
 						</section>
-					</section>
+					</div>
 				</section>
 				<!-- 基礎データここまで -->
 
@@ -327,8 +329,15 @@
 				</section>
 
 				<!-- 回帰分析結果の指標データ -->
-				<!-- 賃金水準 -->
-
+				<!-- Chart.js: 賃金水準 -->
+				<section>
+					<section data-background-color="rgb(255, 255, 255)">
+						<iframe class="stretch center-vertically" data-src="./chartjs/wage_level/wage_level.html" data-preload frameborder="0"
+						allowfullscreen></iframe>
+						<p style="font-size: small;">出典: Numbeo</p>
+					</section>
+				</section>
+				
 
 				<!-- 留学生数 -->
 				<section>
@@ -344,21 +353,39 @@
 					<section data-background-color="rgb(255, 255, 255)">
 						<iframe class="stretch center-vertically" data-src="./chartjs/startups/startups_gpci.html" data-preload frameborder="0"
 						allowfullscreen></iframe>
+						<p style="font-size: small;">出典: Crunchbase</p>
 					</section>
 					<!-- スタートアップ -->
 					<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
 						<iframe class="stretch" data-src="./mapbox/startups/startups.html" data-preload frameborder="0"
 						allowfullscreen></iframe>
+						<p style="font-size: small;">出典: Initial</p>
 					</section>
 					<!-- Chart.js: startups_Initial by category -->
 					<section data-background-color="rgb(255, 255, 255)">
 						<iframe class="stretch center-vertically" data-src="./chartjs/startups/startups_initial.html" data-preload frameborder="0"
 						allowfullscreen></iframe>
+						<p style="font-size: small;">出典: Initial</p>
+					</section>
+				</section>
+				
+				<!-- 研究開発 -->
+				<section>
+					<!-- Chart.js: 研究開発 -->
+					<section data-background-color="rgb(255, 255, 255)">
+						<iframe class="stretch center-vertically" data-src="./chartjs/r&d/r&d.html" data-preload frameborder="0"
+						allowfullscreen></iframe>
+						<p style="font-size: small;">出典: OECD, UNESCO</p>
 					</section>
 				</section>
 
 				<!-- 観光地の充実度 -->
-
+				<section>
+					<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
+						<iframe class="stretch" data-src="./mapbox/tourist_attractions/tourist_attractions.html" data-preload frameborder="0"
+							allowfullscreen></iframe>
+					</section>
+				</section>
 
 				<!-- ハイクラスホテル客室数 -->
 				<section>
@@ -368,8 +395,14 @@
 					</section>
 				</section>
 
-				<!-- 買い物の魅力 -->
-
+				<!-- Chart.js: 買い物の魅力 -->
+				<section>
+					<section data-background-color="rgb(255, 255, 255)">
+						<iframe class="stretch center-vertically" data-src="./chartjs/shopping/shopping.html" data-preload frameborder="0"
+						allowfullscreen></iframe>
+						<p style="font-size: small;">出典: TripAdvisor, Residents survey</p>
+					</section>
+				</section>
 
 				<!-- 国際線ネットワーク -->
 				<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
@@ -441,29 +474,29 @@
 
 
 
-
-				<!-- Mapbox: ★★★ Population History Tokyo ★★★ -->
-				<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
-					<iframe class="stretch" data-src="./mapbox/population_history/pop_history_tyo.html" data-preload frameborder="0"
-						allowfullscreen></iframe>
+				<!-- 人口密度の推移 -->
+				<div style="display: none;">
+					<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
+						<iframe class="stretch" data-src="./mapbox/population_history/pop_history_tyo.html" data-preload frameborder="0"
+							allowfullscreen></iframe>
 					</section>
-
+				</div>
 			
 				<!-- 美術館・博物館 -->
-				<section>
+				<div style="display: none;">
 					<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
 						<iframe class="stretch" data-src="./mapbox/museums/museums.html" data-preload frameborder="0"
 							allowfullscreen></iframe>
 					</section>
-				</section>
+				</div>
 			
 				<!-- 劇場 -->
-				<section>
+				<div style="display: none;">
 					<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
 						<iframe class="stretch" data-src="./mapbox/theaters/theaters.html" data-preload frameborder="0"
 							allowfullscreen></iframe>
 					</section>
-				</section>
+				</div>
 	
 	
 

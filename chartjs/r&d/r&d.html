@@ -22,21 +22,28 @@
     <!-- Chart.js script -->
     <script>
     //===== グラフ =====//
-        const labels_01 = [
-            'London',
-            'New York',
-            'Tokyo',
-            'Paris',
+        const labels = [
+            'UK',
+            'USA',
+            'Japan',
+            'France',
             'Singapore',
         ];
         
         const data_01 = {
-            labels: labels_01,
+            labels: labels,
             datasets: [{
-                label: 'Crunchbase3年平均',
+                label: 'GDP (2019)',
                 backgroundColor: 'rgba(255, 0, 0, 0.5)',
-                borderColor: 'rgba(255, 0, 0, 0.5)',
-                data: [1896,458,575,362,1443],
+                borderColor: 'rgba(200, 0, 0, 0.8)',
+                borderWidth: 1,
+                data: [2857058, 21380976, 5123318, 2728870, 375473],
+            }, {
+                label: 'R&D (2019)',
+                backgroundColor: 'rgba(0, 0, 255, 0.5)',
+                borderColor: 'rgba(0, 0, 200, 0.8)',
+                borderWidth: 1,
+                data: [90678, 367947, 164709, 59811, 7078],
             }]
         };
         
@@ -47,9 +54,9 @@
                 plugins: {
                     title: {
                         display: true,
-                        text: 'スタートアップ数',
+                        text: 'GDPと研究開発費 (USD 1 million)',
                         font: {
-                            size: 24 // Adjust this value to make the title larger
+                            size: 24
                         }
                     }
                 },
@@ -57,14 +64,14 @@
                     x: {
                         ticks: {
                             font: {
-                                size: 18 // Adjust this value to make the city names larger
+                                size: 18
                             }
                         }
                     },
                     y: {
                         ticks: {
                             font: {
-                                size: 16 // Adjust this value to change the font size of the y-axis labels
+                                size: 16
                             }
                         }
                     }
@@ -72,10 +79,9 @@
             }
         };
 
-
-        
         const graph_01 = new Chart(
-        document.getElementById('graph_01'), config_01 );
+            document.getElementById('graph_01'), config_01
+        );
     </script>
 </body>
 </html>
