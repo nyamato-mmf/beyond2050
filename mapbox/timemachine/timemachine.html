@@ -32,7 +32,7 @@ body { margin: 0; padding: 0; }
 .popupCustom .mapboxgl-popup-content {
     width: 960px;
     height: 600px;
-    font: 14px Arial, sans-serif;
+    font: 24px Arial, sans-serif;
 }
 
 </style>
@@ -42,19 +42,8 @@ body { margin: 0; padding: 0; }
 
 <!-- Sidebar -->
 <div id="sidebar">
-    <h1 class="indicator-title" style="color: black;">観光スポット</h1>
-    <p style="color: black; font-size: 16pt;">(レビュー数: 1000以上)</p>
-    <form id="fly">
-        <!-- Select a city to fly to -->
-        <select name="select">
-            <option value="fly-tyo">Tokyo</option>
-            <option value="fly-nyc">New York</option>
-            <option value="fly-lon">London</option>
-            <option value="fly-par">Paris</option>
-            <option value="fly-sin">Singapore</option>
-        </select>
-    </form>
-    <p style="font-size: small; color: black;">出典: TripAdvisor</p>
+    <h1 class="indicator-title" style="color: white;">銀座VR</h1>
+    <p style="font-size: small; color: white;">出典: Mori Memorial Foundation</p>
 </div>
 
 <div id="map"></div>
@@ -66,83 +55,90 @@ body { margin: 0; padding: 0; }
         style: 'mapbox://styles/mapbox/satellite-v9',
         projection: 'globe', // Display the map as a globe, since satellite-v9 defaults to Mercator
         zoom: 14, // starting zoom
-        center: [139.76504868387178, 35.67129573187719] // starting center
+        maxZoom: 14,
+        minZoom: 14,
+        pitch: 0,
+        bearing:0,
+        center: [139.76504868387178, 35.67129573187719], // starting center
+        dragRotate: false, // disable map rotation
+        pitchWithRotate: false // disable pitch change with rotation
     });
 
+    function addVideoLayer(id, icon, coordinates, descriptionUrl) {
+        map.loadImage(icon, (error, image) => {
+            if (error) throw error;
 
+            // Add the image to the map style.
+            map.addImage(id, image);
 
-    /* --------------------------------------------------------
-    　映像
-    -------------------------------------------------------- */
-    map.loadImage(
-    'marker-1850.png',
-    (error, image) => {
-        if (error) throw error;
-
-        // Add the image to the map style.
-        map.addImage('icon_1850', image);
-
-        // Add a data source containing several points' features.
-        map.addSource('video_1850', {
-            'type': 'geojson',
-            'data': {
-                'type': 'FeatureCollection',
-                'features': [
-                    {
-                        'type': 'Feature',
-                        'properties': {
-                            "name": "銀座 (1850年代)",
-                            'description':
-                                '<strong>銀座 (1850年代)</strong><p><iframe width="960" height="540" src="https://www.tokyotimemachine.com/virtualginza/index.htm?media-index=9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe></p>',
+            // Add a data source containing several points' features.
+            map.addSource(id, {
+                'type': 'geojson',
+                'data': {
+                    'type': 'FeatureCollection',
+                    'features': [
+                        {
+                            'type': 'Feature',
+                            'properties': {
+                                "name": id,
+                                'description':
+                                    `<strong>${id}</strong><p><iframe width="960" height="540" src="${descriptionUrl}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe></p>`,
+                            },
+                            'geometry': {
+                                'type': 'Point',
+                                'coordinates': coordinates
+                            }
                         },
-                        'geometry': {
-                            'type': 'Point',
-                            'coordinates': [139.76504868387178, 35.67129573187719]
-                        }
-                    },
-                ]
-            }
-        });
+                    ]
+                }
+            });
 
-        // Add a layer to use the image to represent the data.
-        map.addLayer({
-            'id': 'video_1850',
-            'type': 'symbol',
-            'source': 'video_1850', // reference the data source
-            'layout': {
-                'icon-image': 'icon_1850', // reference the image
-                'icon-size': 1,
-                'visibility': 'visible'
-            },
-        });
+            // Add a layer to use the image to represent the data.
+            map.addLayer({
+                'id': id,
+                'type': 'symbol',
+                'source': id, // reference the data source
+                'layout': {
+                    'icon-image': id, // reference the image
+                    'icon-size': 1,
+                    'visibility': 'visible'
+                },
+            });
 
-        // On click, get coordinates and a description.
-        map.on('click', 'video_1850', (e) => {
-            const coordinates = e.features[0].geometry.coordinates.slice();
-            const description = e.features[0].properties.description;
+            // On click, get coordinates and a description.
+            map.on('click', id, (e) => {
+                const coordinates = e.features[0].geometry.coordinates.slice();
+                const description = e.features[0].properties.description;
 
-            // Offset the latitude (coordinates[1]) slightly to move the popup above the marker
-            const offset_x = 0.01; // Adjust this value as needed
-            const offset_y = 0.01; // Adjust this value as needed
-            coordinates[0] -= offset_x;
-            coordinates[1] += offset_y;
+                // Offset the latitude slightly to move the popup above the marker
+                const offset_x = 0.01; // Adjust this value as needed
+                const offset_y = 0.01; // Adjust this value as needed
+                coordinates[0] -= offset_x;
+                coordinates[1] += offset_y;
 
-            // Create a popup object
-            new mapboxgl.Popup({className: 'popupCustom'})
-                .setLngLat(coordinates)
-                .setHTML(description)
-                .addTo(map);
-        });
+                // Create a popup object
+                new mapboxgl.Popup({className: 'popupCustom'})
+                    .setLngLat(coordinates)
+                    .setHTML(description)
+                    .addTo(map);
+            });
 
-        map.on('mouseenter', 'video_1850', () => {
-            map.getCanvas().style.cursor = 'pointer';
-        });
+            map.on('mouseenter', id, () => {
+                map.getCanvas().style.cursor = 'pointer';
+            });
 
-        map.on('mouseleave', 'video_1850', () => {
-            map.getCanvas().style.cursor = '';
+            map.on('mouseleave', id, () => {
+                map.getCanvas().style.cursor = '';
+            });
         });
     }
-);
+
+    map.on('load', () => {
+        addVideoLayer('video_1850', 'marker-1850.png', [139.76504868387178, 35.675], 'https://www.tokyotimemachine.com/virtualginza/index.htm?media-index=9');
+        addVideoLayer('video_1910', 'marker-1910.png', [139.76504868387178, 35.672], 'https://www.tokyotimemachine.com/virtualginza/index.htm?media-index=29');
+        addVideoLayer('video_1940', 'marker-1940.png', [139.76504868387178, 35.669], 'https://www.tokyotimemachine.com/virtualginza/index.htm?media-index=49');
+    });
+</script>
 
 
 

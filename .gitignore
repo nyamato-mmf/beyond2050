@@ -16,7 +16,8 @@ _xlsx/*
 _tif/*
 _python/*
 _old/*
-*.ipynb
-*.xlsx
 _r/*
 _arcgis/*
+*.ipynb
+*.xlsx
+*.ai
