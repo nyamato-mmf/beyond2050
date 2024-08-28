@@ -12,17 +12,50 @@
 <style>
 body { margin: 0; padding: 0; }
 #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+
+/* ===== sidebar =====*/
+#sidebar {
+    position: absolute;
+    z-index: 2;
+    top: 0px;
+    left: 0px;
+    width: auto;
+    padding: 20px;
+  }
+  
+.indicator-title{
+    color: white;
+    font-size: 50px;
+}
+
 /* カスタムポップアップ */
 .popupCustom .mapboxgl-popup-content {
     width: 960px;
     height: 600px;
     font: 14px Arial, sans-serif;
-    }
-
+}
 
 </style>
 </head>
+
 <body>
+
+<!-- Sidebar -->
+<div id="sidebar">
+    <h1 class="indicator-title" style="color: black;">観光スポット</h1>
+    <p style="color: black; font-size: 16pt;">(レビュー数: 1000以上)</p>
+    <form id="fly">
+        <!-- Select a city to fly to -->
+        <select name="select">
+            <option value="fly-tyo">Tokyo</option>
+            <option value="fly-nyc">New York</option>
+            <option value="fly-lon">London</option>
+            <option value="fly-par">Paris</option>
+            <option value="fly-sin">Singapore</option>
+        </select>
+    </form>
+    <p style="font-size: small; color: black;">出典: TripAdvisor</p>
+</div>
 
 <div id="map"></div>
 
