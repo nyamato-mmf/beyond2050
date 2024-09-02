@@ -30,7 +30,7 @@
 			<div class="slides">
 
 				<!-- タイトル -->
-				<section data-background="./img/worldmap.png">
+				<section data-background="./img/earth.png">
 					<h2>Tokyo Beyond 2050</h2>
 				</section>
 
@@ -59,7 +59,7 @@
 				<!-- ====================== 回帰分析 ====================== -->
 				<!-- 相関係数（ヒートマップ） -->
 				<section>
-					<section>
+					<section data-background-color="white">
 						<h6>線形モデル</h6>
 						<p style="font-size: 30pt;">
 							<script type="text/x-mathjax-config">
@@ -81,7 +81,7 @@
 					<!-- 外国人居住者数のグラフ -->
 					<section data-background-color="white">
 						<div style="display: flex; justify-content: center; align-items: center;">
-							<img src="./img/foreign_residents_barh.png" alt="Foreign Residents Bar Chart" style="max-height: 90vh;">
+							<img src="./img/foreign_residents_barh_seaborn.png" alt="Foreign Residents Bar Chart" style="max-height: 90vh;">
 						</div>
 					</section>	
 					
@@ -133,7 +133,7 @@
 					<section data-background-color="white">
 						<div style="display: flex; justify-content: center; gap: 20px;">
 							<div style="display: flex; justify-content: center; align-items: center;">
-								<img data-src="./img/coef_residents.png" height="650">
+								<img data-src="./img/coef_residents_seaborn.png" height="650">
 							</div>
 						</div>
 					</section>
@@ -141,7 +141,7 @@
 					<!-- 外国人訪問者数のグラフ -->
 					<section data-background-color="white">
 						<div style="display: flex; justify-content: center; align-items: center;">
-							<img src="./img/foreign_visitors_barh.png" alt="Foreign Residents Bar Chart" style="max-height: 90vh;">
+							<img src="./img/foreign_visitors_barh_seaborn.png" alt="Foreign Residents Bar Chart" style="max-height: 90vh;">
 						</div>
 					</section>	
 					<!-- 各説明変数の相関係数-->
@@ -247,21 +247,6 @@
 							allowfullscreen></iframe>
 					</section>
 
-					<!-- 緑地 -->
-					<div style="display: none;">
-						<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
-							<iframe class="stretch" data-src="./mapbox/green/green_coverage.html" data-preload frameborder="0"
-								allowfullscreen></iframe>
-						</section>
-					</div>
-	
-					<!-- 駅 -->
-					<div style="display: none;">
-						<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
-							<iframe class="stretch" data-src="./mapbox/stations/stations.html" data-preload frameborder="0"
-								allowfullscreen></iframe>
-						</section>
-					</div>
 				</section>
 				<!-- 基礎データここまで -->
 
@@ -367,16 +352,6 @@
 					</section>
 				</section>
 				
-				<!-- 研究開発 -->
-				<section>
-					<!-- Chart.js: 研究開発 -->
-					<section data-background-color="rgb(255, 255, 255)">
-						<iframe class="stretch center-vertically" data-src="./chartjs/r&d/r&d.html" data-preload frameborder="0"
-						allowfullscreen></iframe>
-						<p style="font-size: small;">出典: OECD, UNESCO</p>
-					</section>
-				</section>
-
 				<!-- 観光地の充実度 -->
 				<section>
 					<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
@@ -409,14 +384,6 @@
 				</section>
 				<!-- 回帰分析結果の指標データここまで -->
 
-
-				<!-- タイムマシン -->
-				<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
-					<iframe class="stretch" data-src="./mapbox/timemachine/timemachine.html" data-preload frameborder="0"
-						allowfullscreen></iframe>
-				</section>
-
-
 				
 				<!-- コンセプト -->
 				<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)" data-background-color="black">
@@ -425,6 +392,16 @@
 					<div class="r-hstack justify-center">
 						<div data-id="box1" style="background: #999; width: 50px; height: 50px; margin: 10px; border-radius: 5px;"></div>
 						<div data-id="box2" style="background: #999; width: 50px; height: 50px; margin: 10px; border-radius: 5px;"></div>
+					</div>
+				</section>
+
+				<!-- 2つの要素が合成 -->
+				<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)">
+					<div class="r-stack">
+						<div data-id="box1" style="background: #696eff; width: 400px; height: 400px; border-radius: 50%;"></div>
+						<div data-id="box2" style="background: #f8acff; width: 300px; height: 300px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+							<h6 style="margin: 0;">都市の魅力</h6>
+						</div>
 					</div>
 				</section>
 
@@ -442,16 +419,6 @@
 								<h6 data-auto-animate-delay="1">固有の魅力</h6> <!-- 500ms delay -->
 								<p data-auto-animate-delay="1">Identity</p> <!-- 1000ms delay -->
 							</div>
-						</div>
-					</div>
-				</section>
-
-				<!-- 2つの要素が合成 -->
-				<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)">
-					<div class="r-stack">
-						<div data-id="box1" style="background: #696eff; width: 400px; height: 400px; border-radius: 10%;"></div>
-						<div data-id="box2" style="background: #f8acff; width: 300px; height: 300px; border-radius: 10%; display: flex; align-items: center; justify-content: center;">
-							<h6 style="margin: 0;">都市の魅力</h6>
 						</div>
 					</div>
 				</section>
@@ -476,38 +443,92 @@
 						<li>環境（質）</li>
 					</ul>
 				</section>
+
+				<!-- 対象指標一覧 -->
+				<section>
+					<section data-transition="fade-in fade-out">
+						<div style="display: flex; justify-content: center; align-items: center;">
+							<img data-src="./img/icf/スライド1.PNG">
+						</div>
+					</section>
+					<section data-transition="fade-in fade-out">
+						<div style="display: flex; justify-content: center; align-items: center;">
+							<img data-src="./img/icf/スライド2.PNG">
+						</div>
+					</section>
+					<section data-transition="fade-in fade-out">
+						<div style="display: flex; justify-content: center; align-items: center;">
+							<img data-src="./img/icf/スライド3.PNG">
+						</div>
+					</section>
+					<section data-transition="fade-in fade-out">
+						<div style="display: flex; justify-content: center; align-items: center;">
+							<img data-src="./img/icf/スライド4.PNG">
+						</div>
+					</section>
+					<section data-transition="fade-in fade-out">
+						<div style="display: flex; justify-content: center; align-items: center;">
+							<img data-src="./img/icf/スライド5.PNG">
+						</div>
+					</section>
+					<section data-transition="fade-in fade-out">
+						<div style="display: flex; justify-content: center; align-items: center;">
+							<img data-src="./img/icf/スライド6.PNG">
+						</div>
+					</section>
+					<section data-transition="fade-in fade-out">
+						<div style="display: flex; justify-content: center; align-items: center;">
+							<img data-src="./img/icf/スライド7.PNG">
+						</div>
+					</section>
+					<section data-transition="fade-in fade-out">
+						<div style="display: flex; justify-content: center; align-items: center;">
+							<img data-src="./img/icf/スライド8.PNG">
+						</div>
+					</section>
+					<section data-transition="fade-in fade-out">
+						<div style="display: flex; justify-content: center; align-items: center;">
+							<img data-src="./img/icf/スライド9.PNG">
+						</div>
+					</section>
+					<section data-transition="fade-in fade-out">
+						<div style="display: flex; justify-content: center; align-items: center;">
+							<img data-src="./img/icf/スライド10.PNG">
+						</div>
+					</section>
+					<section data-transition="fade-in fade-out">
+						<div style="display: flex; justify-content: center; align-items: center;">
+							<img data-src="./img/icf/スライド11.PNG">
+						</div>
+					</section>
+					<section data-transition="fade-in fade-out">
+						<div style="display: flex; justify-content: center; align-items: center;">
+							<img data-src="./img/icf/スライド12.PNG">
+						</div>
+					</section>
+					<section data-transition="fade-in fade-out">
+						<div style="display: flex; justify-content: center; align-items: center;">
+							<img data-src="./img/icf/スライド13.PNG">
+						</div>
+					</section>
+					<section data-transition="fade-in fade-out">
+						<div style="display: flex; justify-content: center; align-items: center;">
+							<img data-src="./img/icf/スライド14.PNG">
+						</div>
+					</section>
+					<section data-transition="fade-in fade-out">
+						<div style="display: flex; justify-content: center; align-items: center;">
+							<img data-src="./img/icf/スライド15.PNG">
+						</div>
+					</section>
+				</section>
 						
 
-
-
-				<!-- 人口密度の推移 -->
-				<div style="display: none;">
-					<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
-						<iframe class="stretch" data-src="./mapbox/population_history/pop_history_tyo.html" data-preload frameborder="0"
-							allowfullscreen></iframe>
-					</section>
-				</div>
-			
-				<!-- 美術館・博物館 -->
-				<div style="display: none;">
-					<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
-						<iframe class="stretch" data-src="./mapbox/museums/museums.html" data-preload frameborder="0"
-							allowfullscreen></iframe>
-					</section>
-				</div>
-			
-				<!-- 劇場 -->
-				<div style="display: none;">
-					<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
-						<iframe class="stretch" data-src="./mapbox/theaters/theaters.html" data-preload frameborder="0"
-							allowfullscreen></iframe>
-					</section>
-				</div>
-	
-	
-
-
-				
+				<!-- タイムマシン -->
+				<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
+					<iframe class="stretch" data-src="./mapbox/timemachine/timemachine.html" data-preload frameborder="0"
+						allowfullscreen></iframe>
+				</section>	
 
 			</div>
 		</div>
