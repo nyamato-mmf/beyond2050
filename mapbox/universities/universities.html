@@ -48,7 +48,7 @@ body { margin: 0; padding: 0; }
 
 <!-- Sidebar -->
 <div id="sidebar">
-    <h1 class="indicator-title">世界トップ大学</h1>
+    <h1 class="indicator-title">大学・短期大学</h1>
     <form id="fly">
         <!-- Select a city to fly to -->
         <select name="select">
@@ -58,7 +58,8 @@ body { margin: 0; padding: 0; }
             <option value="fly-par">Paris</option>
             <option value="fly-sin">Singapore</option>
         </select>
-    </form>    
+    </form>
+    <p style="font-size: small; color: white;">出典: 国土数値情報</p>
 </div>
 
 <div id="map"></div>
@@ -79,7 +80,7 @@ body { margin: 0; padding: 0; }
         map.addSource('universities', {
             type: 'geojson',
             // Use a URL for the value for the `data` property.
-            data: './geojson/universities_2020.geojson' 
+            data: './geojson/universities.geojson' 
         });
 
         map.addLayer({
@@ -89,11 +90,10 @@ body { margin: 0; padding: 0; }
             'paint': {
                 'circle-radius': 5,
                 'circle-stroke-width': 1,
-                'circle-color': 'blue',
+                'circle-color': 'red',
                 'circle-stroke-color': 'white'
             }
         });
-
 
         //##### 半径 5-10km データ #####//
         map.addSource('radius', {
@@ -111,65 +111,48 @@ body { margin: 0; padding: 0; }
             }
         });
 
-        //##### 半径 50km データ #####//
-        map.addSource('radius_50km', {
-            type: 'geojson',
-            // Use a URL for the value for the `data` property.
-            data: '../geojson_common/radius_50km.geojson' 
-        });
-
-        map.addLayer({
-            'id': 'radius-layer_50km',
-            'type': 'line',
-            'source': 'radius_50km',
-            'paint': {
-                'line-color': 'yellow',
-            }
-        });
-
-
         //##### Fly to 機能 #####//
         document.getElementById("fly").select.onchange = function() {
             var target = document.getElementById("fly").select.value;
             console.log(target)
 
             switch (target) {
-                    case "fly-tyo":
-                        map.flyTo({
-                            center: [139.7527758040573, 35.68535529255434],
-                            zoom: 11,
-                            essential: true
-                        });
-                        break;
-                    case "fly-nyc":
-                        map.flyTo({
-                            center: [-73.98554260298089, 40.7581534610924],
-                            zoom: 11,
-                            essential: true
-                        });
-                        break;
-                    case "fly-lon":
-                        map.flyTo({
-                            center: [-0.1280757371601969, 51.508110075964964],
-                            zoom: 11,
-                            essential: true
-                        });
-                        break;
-                    case "fly-par":
-                        map.flyTo({
-                            center: [2.3553137, 48.8809481],
-                            zoom: 11,
-                            essential: true
-                        });
-                        break;
-                    case "fly-sin":
-                        map.flyTo({
-                            center: [103.8513365, 1.2830173],
-                            zoom: 11,
-                            essential: true
-                        });
-                        break;
-                }
+                case "fly-tyo":
+                    map.flyTo({
+                    center: [139.7527758040573, 35.68535529255434],
+                    zoom: 11,
+                    essential: true
+                    });
+                    break;
+                case "fly-nyc":
+                    map.flyTo({
+                    center: [-73.98554260298089, 40.7581534610924],
+                    zoom: 11,
+                    essential: true
+                    });
+                    break;
+                case "fly-lon":
+                    map.flyTo({
+                    center: [-0.1280757371601969, 51.508110075964964],
+                    zoom: 11,
+                    essential: true
+                    });
+                    break;
+                case "fly-par":
+                    map.flyTo({
+                    center: [2.3553137, 48.8809481],
+                    zoom: 11,
+                    essential: true
+                    });
+                    break;
+                case "fly-sin":
+                    map.flyTo({
+                    center: [103.8513365, 1.2830173],
+                    zoom: 11,
+                    essential: true
+                    });
+                    break;
+            }
         };
 
         //##### Pop up 機能 #####//
@@ -185,7 +168,7 @@ body { margin: 0; padding: 0; }
         
         // Copy coordinates array.
         const coordinates = e.features[0].geometry.coordinates.slice();      
-        const description = e.features[0].properties["Name"];
+        const description = e.features[0].properties["P29_005"];
         
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
