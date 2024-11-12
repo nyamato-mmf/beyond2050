@@ -14,7 +14,7 @@
             width: 500px;
             height: 500px;
             margin: auto;
-            margin-top: 20px;
+            margin-top: 50px;
         }
         
     </style>
@@ -28,6 +28,11 @@
 
 <!-- jsファイル読み込み -->
 <script>
+
+    Chart.Legend.prototype.afterFit = function() {
+        this.height = this.height + 30;
+    };
+
     const labels_f = [
         "経済",
         "研究・開発",
@@ -55,7 +60,7 @@
         label: city,
         data: cityScores[city],
         backgroundColor: 'rgba(0, 0, 0, 0)',
-        borderColor: colors[index].replace('0.7', '1'), // Darker border color
+        borderColor: colors[index].replace('1', '1'), // Darker border color
         borderWidth: 2
     }));
 
@@ -70,22 +75,28 @@
                 text: "分野別レーダーチャート（偏差値）",
                 display: true,
                 fontSize: 20,
+                fontColor: "black" // Title font color
             },
             scale: {
                 pointLabels: {
-                    fontSize: 14
+                    fontSize: 14,
+                    fontColor: "black" // Radar labels font color
                 },
                 ticks: {
                     max: 100,
                     min: 0,
-                    stepSize: 20
+                    stepSize: 20,
+                    fontColor: "black" // Scale ticks font color
                 },
                 gridLines: {
                     lineWidth: 20,
                 },
             },
             legend: {
-                display: true // Display the legend for city names
+                display: true, // Display the legend for city names
+                labels: {
+                    fontColor: "black" // Legend labels font color
+                }
             },
             tooltips: {
                 mode: "label",
@@ -95,7 +106,6 @@
                     }
                 },
                 titileFontSize: 16,
-                titileFontColor: "pink",
                 titleSpacing: 10,
                 caretSize: 10,
                 caretPadding: 10,
