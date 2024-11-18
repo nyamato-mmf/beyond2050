@@ -18,6 +18,7 @@ _python/*
 _old/*
 _r/*
 _arcgis/*
+_blender/*
 *.ipynb
 *.xlsx
 *.ai
